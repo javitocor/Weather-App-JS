@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link home" href="#">Home</a>
+              <a class="nav-link" id="home">Home</a>
             </li>
           </ul>
           <span class="navbar-text">
@@ -29,32 +29,32 @@
         <div class="text-center bg-dark p-3 w-75 mx-auto d-flex flex-column">
             <h1 class="text-white-50">Search by Location</h1>
             <h5>Write the location to get the weather</h5>
-            <form id="search" action="javascript:void(0);">
+            <form id="searching" action="javascript:void(0);">
               <input class="form-class w-50" type="text" id="search" placeholder="Input your search keyword" name="search">
               <br><br>
               <input type="submit" class="btn btn-warning" id="submit" value="Search!">
             </form>
         </div>
     </main>
-    <section id="section">
+    <section id="section" class="bg-dark p-4">
       <div class="card bg-dark text-white w-50 m-auto">
-        <div class="image"></div>
+        <div id="image"></div>
         <div class="card-img-overlay">
-          <h5 class="card-title title text-center text-warning"></h5>
+          <h5 class="card-title text-center text-warning" id="title"></h5>
           <div class="d-flex flex-row justify-content-around">
             <ul class="list-group list-unstyled">
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item temp"><i class="fas fa-thermometer-half text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-grouy-item feel"><i class="fas fa-meteor text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item desc"><i class="fas fa-cloud-sun-rain text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item pressure"><i class="fas fa-compress-arrows-alt text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item humidity"><i class="fas fa-percent text-warning my-2"></i></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="temp"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-grouy-item" id="feel"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="desc"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="pressure"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="humidity"></li>
             </ul>
             <ul class="list-group list-unstyled">
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item minTemp"><i class="fas fa-temperature-low text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item maxTemp"><i class="fas fa-temperature-high text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item wind"><i class="fas fa-wind text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item windDir"><i class="fas fa-compass text-warning my-2"></i></li>
-              <li style="background-color: 255,255,255,0.8;";class="list-group-item clouds"><i class="fas fa-cloud text-warning my-2"></i></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="minTemp"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="maxTemp"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="wind"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="windDir"></li>
+              <li style="background-color: 255,255,255,0.8;";class="list-group-item" id="clouds"></li>
             </ul>
           </div>
         </div>
@@ -62,7 +62,7 @@
     </section>
     <footer class="footer bg-dark p-3">
         <div class="container">
-          <p class="text-muted">Powered By &copy; JaviCorp</p>
+          <p class="text-warning">Powered By &copy; JaviCorp</p>
         </div>
     </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

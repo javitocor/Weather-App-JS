@@ -13,21 +13,52 @@ const dom = function () {
     }
 
     function fillCard(data) {
-        helpers.addInnerText('temp', data['main']['temp'] + ' Celsius');
-        helpers.addInnerText('feel', data['main']['feels_like'] + ' Celsius');
-        helpers.addInnerText('desc', data['weather']['main']);
-        helpers.addInnerText('pressure', data['main']['pressure'] + ' hPa');
-        helpers.addInnerText('humidity', data['main']['humidity'] + '%');
-        helpers.addInnerText('minTemp', data['main']['temp_min'] + ' Celsius');
-        helpers.addInnerText('maxTemp', data['main']['temp_max'] + ' Celsius');
-        helpers.addInnerText('wind', data['wind']['speed'] + ' meter/sec');
-        helpers.addInnerText('windDir', data['wind']['deg'] + ' degrees');
-        helpers.addInnerText('clouds', data['clouds']['all'] + '%');
+        helpers().addInnerText('title', data['name']);
+        helpers().addInnerText('temp', '<i class="fas fa-thermometer-half text-warning my-2"></i> ' + data['main']['temp'] + ' Celsius');
+        helpers().addInnerText('feel', '<i class="fas fa-meteor text-warning my-2"></i> ' + data['main']['feels_like'] + ' Celsius');
+        helpers().addInnerText('desc', '<i class="fas fa-cloud-sun-rain text-warning my-2"></i> ' + data['weather'][0]['main']);
+        helpers().addInnerText('pressure', '<i class="fas fa-compress-arrows-alt text-warning my-2"></i> ' + data['main']['pressure'] + ' hPa');
+        helpers().addInnerText('humidity', '<i class="fas fa-percent text-warning my-2"></i> ' + data['main']['humidity'] + '%');
+        helpers().addInnerText('minTemp','<i class="fas fa-temperature-low text-warning my-2"></i> ' + data['main']['temp_min'] + ' Celsius');
+        helpers().addInnerText('maxTemp','<i class="fas fa-temperature-high text-warning my-2"></i>' + data['main']['temp_max'] + ' Celsius');
+        helpers().addInnerText('wind','<i class="fas fa-wind text-warning my-2"></i> ' + data['wind']['speed'] + ' meter/sec');
+        helpers().addInnerText('windDir','<i class="fas fa-compass text-warning my-2"></i> ' + data['wind']['deg'] + ' degrees');
+        helpers().addInnerText('clouds','<i class="fas fa-cloud text-warning my-2"></i> ' + data['clouds']['all'] + '%');
     }
 
+    function imageSwitch(data) {
+        const code = data['weather'][0]['id'];
+        switch (true) {
+            case code >= 200 && code <= 232:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/lighting.jpg')";
+                break;
+            case code >= 300 && code <= 321:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/drizzle.jpg')";
+                break;
+            case code >= 500 && code <= 531:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/rain.jpg')";
+                break;
+            case code >= 600 && code <= 622:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/snow.jpg')";
+                break;
+            case code >= 701 && code <= 781:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/mist.jpg')";
+                break;
+            case code >= 801 && code <= 804:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/rainclouds.jpg')";
+                break;
+            case code==800:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/shiningsun.jpg')";
+                break;
+            default:
+                document.getElementById('image').style.backgroundImage = "url('../src/images/bluesky.jpg')";
+                break;
+        }
+    };
 
 
-    return { show, fillCard, }
+
+    return { show, fillCard, imageSwitch, }
 };
 
 export { dom }

@@ -1,7 +1,7 @@
 import {dom} from './dom';
 
 const events = function () {
-    const submit = document.getElementById('submit');
+    
     async function getSearch() {
         try {
             const value = (document.getElementById('search').value).toLowerCase();
@@ -15,13 +15,12 @@ const events = function () {
         } catch (error) {
             console.error('Error:', error);
         }
-    };
-    submit.addEventListener('click', getSearch);
-
+    };  
 
     function showFlow(data) {
-        dom.fillCard(data);
-        dom.show()
+        dom().fillCard(data);
+        dom().imageSwitch(data);
+        dom().show()
     };
 
     return { getSearch, showFlow, }
