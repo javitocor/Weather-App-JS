@@ -18,3 +18,19 @@
     height: 80vh;
 }
 
+#temp,
+#feel,
+#desc,
+#pressure,
+#humidity,
+#minTemp,
+#maxTemp,
+#wind,
+#windDir,
+#clouds {
+    background-color: rgba(255,255,255,0.1);
+}
+
+#home {
+    cursor: pointer;
+}

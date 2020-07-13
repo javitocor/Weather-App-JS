@@ -20,7 +20,7 @@ const events = function () {
     function showFlow(data) {
         dom().fillCard(data);
         dom().imageSwitch(data);
-        dom().show()
+        dom().show();
     };
 
     return { getSearch, showFlow, }

@@ -11,6 +11,6 @@ const submit = document.getElementById('submit');
 submit.addEventListener('click', event.getSearch);
 
 const home = document.getElementById('home');
-home.addEventListener('click', ()=>{ manip.show() });
+home.addEventListener('click', ()=>{ location.reload(); });
 
 
