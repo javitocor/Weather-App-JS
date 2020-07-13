@@ -1,6 +1,19 @@
 #main {
+    display: block;
     background-image: url("../images/summer.jpg");
     background-size: cover;
     background-position-y: 100%;
     height: 100vh;
 }
+
+.image {
+    background-image: url("../images/sunset.jpg");
+    background-size: cover;
+    background-position-y: 100%;
+    height: 75vh;
+}
+
+#section {
+    display: block;
+}
+
