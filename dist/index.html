@@ -6,9 +6,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/2c6133bcaa.js" crossorigin="anonymous"></script>
   <title>Weather APP</title>
+  <link rel="icon" type="image/x-icon" sizes="36x36" href="download.ico">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light  navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light  navbar-dark bg-warning">
         <a class="navbar-brand" href="#">Weather App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,16 +25,20 @@
           </span>
         </div>
       </nav>
-    <main>
-        <div class="text-center bg-dark p-3 w-50 mx-auto my-3 d-flex flex-column">
+    <main id="main" class="position-relative p-5">
+        <div class="text-center bg-dark p-3 w-75 mx-auto d-flex flex-column">
             <h1 class="text-white-50">Search by Location</h1>
+            <h5>Write the location to get the weather</h5>
             <form id="search" action="javascript:void(0);">
               <input class="form-class w-50" type="text" id="search" placeholder="Input your search keyword" name="search">
               <br><br>
-              <input type="submit" class="btn btn-secondary" id="submit" value="Search!">
+              <input type="submit" class="btn btn-warning" id="submit" value="Search!">
             </form>
         </div>
     </main>
+    <section>
+        
+    </section>
     <footer class="footer bg-dark p-3">
         <div class="container">
           <p class="text-muted">Powered By &copy; JaviCorp</p>
