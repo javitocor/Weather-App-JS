@@ -23,7 +23,7 @@ const events = function events() {
   async function getSearch(searchBar) {
     try {
       const value = (document.getElementById(searchBar).value).toLowerCase();
-      const url = `http://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=903507f17d707fecd352d38301efba77`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=903507f17d707fecd352d38301efba77`;
       const response = await fetch(url, { mode: 'cors' });
       const cityData = await response.json();
       showFlow(cityData);
