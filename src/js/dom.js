@@ -3,12 +3,12 @@ import {helpers} from './helpers';
 const dom = function () {
 
     function show() {
-        if(document.getElementById('main').style.display = 'block'){
+        if(document.getElementById('main').style.display == 'block'){
             document.getElementById('main').style.display = 'none';
             document.getElementById('section').style.display = 'block';
         } else {
-            document.getElementById('main').style.display = 'block';
-            document.getElementById('section').style.display = 'none';
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('section').style.display = 'block';
         }
     }
 

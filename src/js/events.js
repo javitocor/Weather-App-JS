@@ -2,9 +2,9 @@ import {dom} from './dom';
 
 const events = function () {
     
-    async function getSearch() {
+    async function getSearch(searchBar) {
         try {
-            const value = (document.getElementById('search').value).toLowerCase();
+            const value = (document.getElementById(searchBar).value).toLowerCase();
             const url = `http://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=903507f17d707fecd352d38301efba77&units=metric`;
             const url2 = `http://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=903507f17d707fecd352d38301efba77&unitsimperial`;
             const response = await fetch(url, { mode: 'cors' });
