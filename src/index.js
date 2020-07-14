@@ -10,6 +10,9 @@ let help = helpers();
 const submit = document.getElementById('submit');
 submit.addEventListener('click', event.getSearch.bind(this,'search'));
 
+const submit2 = document.getElementById('submit2');
+submit2.addEventListener('click', event.getForecast);
+
 const search2 = document.getElementById('search2');
 search2.addEventListener('click', event.getSearch.bind(this, 'searchBar'));
 
