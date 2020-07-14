@@ -104,9 +104,7 @@ const dom = function () {
             const wind = helpers().createElementWithInnerText('li', "list-group-item", '<i class="fas fa-wind text-warning my-2"></i> ' + day['wind']['speed'] + ' meter/sec');
             const windDir = helpers().createElementWithInnerText('li', "list-group-item", '<i class="fas fa-compass text-warning my-2"></i> ' + day['wind']['deg'] + ' degrees');            
             const color = document.getElementsByClassName('list-group-item');
-            for(let i = 0; i<color.length; i++){
-                color[i].style = "background-color: rgba(255,255,255,0.1);";
-            };
+            
             ul2.appendChild(minTemp);
             ul2.appendChild(maxTemp);
             ul2.appendChild(wind);
@@ -130,6 +128,10 @@ const dom = function () {
 
             cont.appendChild(card);
             row.appendChild(cont);
+
+            for(let i = 0; i<color.length; i++){
+                color[i].style = "background-color: rgba(255,255,255,0.1);";
+            };
 
             imageSwitch(day, ('images'+`${index+1}`));
         });
