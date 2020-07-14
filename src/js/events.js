@@ -14,6 +14,7 @@ const events = function () {
             showFlow(cityData);
         } catch (error) {
             console.error('Error:', error);
+            alert('Could not find the location');
         }
     };  
 
