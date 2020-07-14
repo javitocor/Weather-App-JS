@@ -18,16 +18,25 @@ const helpers = function helpers() {
         return element.innerHTML = text;        
     };
 
-    function converter(){
-      if(document.getElementById('temp').innerHTML.includes('Celsius')){
-        
-      }
-      const tempFahrenheit = parseFloat((tempCelsius * (9 / 5) + 32).toFixed(2));
-      const tempCelsius = parseFloat(((tempFahrenheit - 32) * 5/9).toFixed(2));
+    function getTemp(data) {
+      const report = {};
+      report.tempC = (parseFloat(data.main.temp) - 273.15).toFixed(1);
+      report.tempF = ((parseFloat(data.main.temp) - 273.15) * (9 / 5) + 32).toFixed(1);
+
+      report.tempFeelC = (parseFloat(data.main.feels_like) - 273.15).toFixed(1);
+      report.tempFeelF = ((parseFloat(data.main.feels_like) - 273.15) * (9 / 5) + 32).toFixed(1);
+
+      report.tempMinC = (parseFloat(data.main.temp_min) - 273.15).toFixed(1);
+      report.tempMinF = ((parseFloat(data.main.temp_min) - 273.15) * (9 / 5) + 32).toFixed(1);
+
+      report.tempMaxC = (parseFloat(data.main.temp_max) - 273.15).toFixed(1);
+      report.tempMaxF = ((parseFloat(data.main.temp_max) - 273.15) * (9 / 5) + 32).toFixed(1);
+
+      return report;
     }
-  
+    
     return {
-      addInnerText, createElement, converter, createElementWithInnerText, 
+      addInnerText, createElement, createElementWithInnerText, getTemp, 
     };
   };
   

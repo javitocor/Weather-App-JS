@@ -19,8 +19,7 @@ search2.addEventListener('click', event.getSearch.bind(this, 'searchBar'));
 const home = document.getElementById('home');
 home.addEventListener('click', ()=>{ dom().show('aaa') });
 
-const farCel = document.getElementById('farCel');
-farCel.addEventListener('click', help.converter.bind(this));
+
 
 
 
