@@ -1,7 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-alert */
-import { dom } from './dom';
-import { helpers } from './helpers';
+import dom from './dom';
+import helpers from './helpers';
 
 const events = function events() {
   function showFlow(data) {
@@ -11,7 +9,7 @@ const events = function events() {
     dom().show('search');
 
     const farCel = document.getElementById('farCel');
-    farCel.onclick = function changeTemp() { dom().converter(helpers().getTemp(data)); };
+    farCel.onclick = function changeTemp() { dom().converter(data); };
   }
 
   function forecastFlow(data) {
@@ -20,18 +18,22 @@ const events = function events() {
     dom().show('forecast');
   }
 
-  async function getSearch(searchBar) {
+  async function getSearch(city) {
     try {
-      const value = (document.getElementById(searchBar).value).toLowerCase();
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=903507f17d707fecd352d38301efba77`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=903507f17d707fecd352d38301efba77&units=metric`;
       const response = await fetch(url, { mode: 'cors' });
       const cityData = await response.json();
       showFlow(cityData);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Error:', error);
       alert('Could not find the location');
     }
+  }
+
+  function getLocation(searchBar) {
+    const city = (document.getElementById(searchBar).value).toLowerCase();
+    getSearch(city);
+    helpers().getFahrenheit(city);
   }
 
   async function getForecast() {
@@ -42,14 +44,15 @@ const events = function events() {
       const cityData = await response.json();
       forecastFlow(cityData);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Error:', error);
       alert('Could not find the location');
     }
   }
 
 
-  return { getSearch, showFlow, getForecast };
+  return {
+    getSearch, showFlow, getForecast, getLocation,
+  };
 };
 
-export { events };
+export { events as default };

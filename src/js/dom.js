@@ -1,7 +1,4 @@
-/* eslint-disable no-useless-concat */
-/* eslint-disable no-plusplus */
-/* eslint-disable import/prefer-default-export */
-import { helpers } from './helpers';
+import helpers from './helpers';
 
 const dom = function dom() {
   function show(value) {
@@ -25,15 +22,14 @@ const dom = function dom() {
   }
 
   function fillCard(data) {
-    const data2 = helpers().getTemp(data);
     helpers().addInnerText('title', `${data.name}, ${data.sys.country}`);
-    helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data2.tempC} Celsius`);
-    helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data2.tempFeelC} Celsius`);
+    helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data.main.temp} Celsius`);
+    helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data.main.feels_like} Celsius`);
     helpers().addInnerText('desc', `<i class="fas fa-cloud-sun-rain text-warning my-2"></i> ${data.weather[0].main}`);
     helpers().addInnerText('pressure', `<i class="fas fa-compress-arrows-alt text-warning my-2"></i> Pressure: ${data.main.pressure} hPa`);
     helpers().addInnerText('humidity', `<i class="fas fa-percent text-warning my-2"></i> Humidity: ${data.main.humidity}%`);
-    helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data2.tempMinC} Celsius`);
-    helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data2.tempMaxC} Celsius`);
+    helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data.main.temp_min} Celsius`);
+    helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data.main.temp_max} Celsius`);
     helpers().addInnerText('wind', `<i class="fas fa-wind text-warning my-2"></i> ${data.wind.speed} meter/sec`);
     helpers().addInnerText('windDir', `<i class="fas fa-compass text-warning my-2"></i> ${data.wind.deg} degrees`);
     helpers().addInnerText('clouds', `<i class="fas fa-cloud text-warning my-2"></i> Clouds: ${data.clouds.all}%`);
@@ -86,7 +82,7 @@ const dom = function dom() {
       const cont = helpers().createElement('div', 'col-5');
       const card = helpers().createElement('div', 'card bg-dark text-white w-100 mb-2 mx-2');
       const imgBg = helpers().createElement('div', '');
-      imgBg.id = 'images' + `${index + 1}`;
+      imgBg.id = `images${index + 1}`;
       imgBg.style = 'background-size: cover;background-position-y: 100%;height: 75vh;';
       const over = helpers().createElement('div', 'card-img-overlay');
       const h5 = helpers().createElement('h5', 'card-title text-center text-warning');
@@ -134,23 +130,24 @@ const dom = function dom() {
         color[i].style = 'background-color: rgba(255,255,255,0.1);';
       }
 
-      // eslint-disable-next-line no-useless-concat
-      imageSwitch(day, ('images' + `${index + 1}`));
+
+      imageSwitch(day, (`images${index + 1}`));
     });
   }
 
 
-  function converter(data) {
+  async function converter(data) {
+    const data2 = await helpers().getFahrenheit(data.name);
     if (document.getElementById('temp').innerHTML.includes(' Celsius')) {
-      helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data.tempF} &#8457`);
-      helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data.tempFeelF} &#8457`);
-      helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data.tempMinF} &#8457`);
-      helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data.tempMaxF} &#8457`);
+      helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data2.main.temp} &#8457`);
+      helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data2.main.feels_like} &#8457`);
+      helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data2.main.temp_min} &#8457`);
+      helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data2.main.temp_max} &#8457`);
     } else {
-      helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data.tempC} Celsius`);
-      helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data.tempFeelC} Celsius`);
-      helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data.tempMinC} Celsius`);
-      helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data.tempMaxC} Celsius`);
+      helpers().addInnerText('temp', `<i class="fas fa-thermometer-half text-warning my-2"></i> Temp: ${data.main.temp} Celsius`);
+      helpers().addInnerText('feel', `<i class="fas fa-meteor text-warning my-2"></i> Feel: ${data.main.feels_like} Celsius`);
+      helpers().addInnerText('minTemp', `<i class="fas fa-temperature-low text-warning my-2"></i> Min: ${data.main.temp_min} Celsius`);
+      helpers().addInnerText('maxTemp', `<i class="fas fa-temperature-high text-warning my-2"></i> Max: ${data.main.temp_max} Celsius`);
     }
   }
 
@@ -160,4 +157,4 @@ const dom = function dom() {
   };
 };
 
-export { dom };
+export { dom as default };

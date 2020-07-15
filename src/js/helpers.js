@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-return-assign */
+
 const helpers = function helpers() {
   const createElement = function createElement(tag, className) {
     const element = document.createElement(tag);
@@ -14,33 +13,27 @@ const helpers = function helpers() {
     return element;
   };
 
-
   const addInnerText = function addInnerText(className, text) {
     const element = document.getElementById(className);
     return element.innerHTML = text;
   };
 
-  function getTemp(data) {
-    const report = {};
-    report.tempC = (parseFloat(data.main.temp) - 273.15).toFixed(1);
-    report.tempF = ((parseFloat(data.main.temp) - 273.15) * (9 / 5) + 32).toFixed(1);
-
-    report.tempFeelC = (parseFloat(data.main.feels_like) - 273.15).toFixed(1);
-    report.tempFeelF = ((parseFloat(data.main.feels_like) - 273.15) * (9 / 5) + 32).toFixed(1);
-
-    report.tempMinC = (parseFloat(data.main.temp_min) - 273.15).toFixed(1);
-    report.tempMinF = ((parseFloat(data.main.temp_min) - 273.15) * (9 / 5) + 32).toFixed(1);
-
-    report.tempMaxC = (parseFloat(data.main.temp_max) - 273.15).toFixed(1);
-    report.tempMaxF = ((parseFloat(data.main.temp_max) - 273.15) * (9 / 5) + 32).toFixed(1);
-
-    return report;
+  async function getFahrenheit(city) {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=903507f17d707fecd352d38301efba77&units=imperial`;
+      const response = await fetch(url, { mode: 'cors' });
+      const cityFahr = await response.json();
+      return cityFahr;
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Could not find the location');
+    }
   }
 
   return {
-    addInnerText, createElement, createElementWithInnerText, getTemp,
+    addInnerText, createElement, createElementWithInnerText, getFahrenheit,
   };
 };
 
 
-export { helpers };
+export { helpers as default };
