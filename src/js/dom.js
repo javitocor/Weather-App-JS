@@ -33,8 +33,8 @@ const dom = function dom() {
     helpers().addInnerText('wind', `<i class="fas fa-wind text-warning my-2"></i> ${data.wind.speed} meter/sec`);
     helpers().addInnerText('windDir', `<i class="fas fa-compass text-warning my-2"></i> ${data.wind.deg} degrees`);
     helpers().addInnerText('clouds', `<i class="fas fa-cloud text-warning my-2"></i> Clouds: ${data.clouds.all}%`);
-    helpers().addInnerText('sunrise', '<i class="fas fa-sun text-warning my-2"></i> ' + `Sunrise: ${new Date((data.sys.sunrise + data.timezone) * 1000).toUTCString().slice(-11, -7)} AM`);
-    helpers().addInnerText('sunset', '<i class="fas fa-sun text-warning my-2"></i> ' + `Sunset: ${new Date((data.sys.sunset + data.timezone) * 1000).toUTCString().slice(-11, -7)} PM`);
+    helpers().addInnerText('sunrise', `<i class="fas fa-sun text-warning my-2"></i> Sunrise: ${new Date((data.sys.sunrise + data.timezone) * 1000).toUTCString().slice(-11, -7)} AM`);
+    helpers().addInnerText('sunset', `<i class="fas fa-sun text-warning my-2"></i> Sunset: ${new Date((data.sys.sunset + data.timezone) * 1000).toUTCString().slice(-11, -7)} PM`);
   }
 
   function imageSwitch(data, id) {
@@ -126,7 +126,7 @@ const dom = function dom() {
       cont.appendChild(card);
       row.appendChild(cont);
 
-      for (let i = 0; i < color.length; i++) {
+      for (let i = 0; i < color.length; i += 1) {
         color[i].style = 'background-color: rgba(255,255,255,0.1);';
       }
 

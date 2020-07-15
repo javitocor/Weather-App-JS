@@ -1,3 +1,6 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 
 const helpers = function helpers() {
   const createElement = function createElement(tag, className) {
@@ -15,7 +18,8 @@ const helpers = function helpers() {
 
   const addInnerText = function addInnerText(className, text) {
     const element = document.getElementById(className);
-    return element.innerHTML = text;
+    element.innerHTML = text;
+    return element.innerHTML;
   };
 
   async function getFahrenheit(city) {

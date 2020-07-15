@@ -1,5 +1,6 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import dom from './dom';
-import helpers from './helpers';
 
 const events = function events() {
   function showFlow(data) {
@@ -33,7 +34,6 @@ const events = function events() {
   function getLocation(searchBar) {
     const city = (document.getElementById(searchBar).value).toLowerCase();
     getSearch(city);
-    helpers().getFahrenheit(city);
   }
 
   async function getForecast() {
