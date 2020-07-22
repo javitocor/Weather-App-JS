@@ -1,9 +1,10 @@
 import dom from './js/dom';
 import events from './js/events';
+import autoComplete from './js/search';
 import './style/style.css';
 
 const event = events();
-
+autoComplete();
 const submit = document.getElementById('submit');
 submit.addEventListener('click', event.getLocation.bind(this, 'search'));
 
