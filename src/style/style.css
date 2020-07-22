@@ -69,7 +69,7 @@
 .ap-suggestion-icon svg {}
 
 /* The icons inside the input ( can be a pin or a cross ) */
-.ap-input-icon {}
+.ap-input-icon {right: 235px;}
 
 /* The style of the svg inside the .ap-input-icon */
 .ap-input-icon svg {}
